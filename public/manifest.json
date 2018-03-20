@@ -1,0 +1,15 @@
+{
+  "short_name": "CH Companion",
+  "name": "CH Companion Chrome Extension",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_popup": "index.html",
+    "default_title": "CH Companion"
+  },
+  "version": "1.0",
+  "content_scripts": [{
+    "matches": ["https://www.cryptohopper.com/*"],
+    "js": ["jquery-3.3.1.min.js", "inject.js"]
+  }],
+  "permissions": ["tabs"]
+}
