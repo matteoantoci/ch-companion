@@ -1,7 +1,9 @@
 /* eslint-disable no-undef */
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, Row, Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import './App.css';
+import { createQuery } from "./query";
 
 function sendMessage(payload) {
   return new Promise((resolve) => {
@@ -13,8 +15,7 @@ function sendMessage(payload) {
 
 function fetchCoins() {
   return fetch('https://scanner.tradingview.com/crypto/scan', {
-    body:
-    '{"filter":[{"left":"volume|60","operation":"nempty"},{"left":"exchange","operation":"equal","right":"BINANCE"},{"left":"name","operation":"match","right":"btc"}],"symbols":{"query":{"types":[]}},"columns":["name","change_abs|60","volume|60","name","subtype","pricescale","minmov","fractional","minmove2"],"sort":{"sortBy":"volume|60","sortOrder":"desc"},"options":{"lang":"en"},"range":[0,150]}',
+    body: createQuery(),
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
     },
@@ -22,31 +23,42 @@ function fetchCoins() {
   })
   .then((res) => res.json())
   .then(({ data }) => {
-    const top50 = data.slice(0, 50);
-    return top50.map(({ d: item }) => {
+    return data.map(({ d: item }) => {
       const [name] = item;
-      const symbol = name.replace('BTC', '');
-      return symbol;
+      return name.replace('BTC', '');
     });
   });
 }
 
-function doThings() {
+function selectCoins() {
   fetchCoins().then((coins) => {
-    sendMessage({ coins });
+    const filteredCoins = coins.filter((coin) => coin !== 'BNB').slice(0, 50);
+    sendMessage({ coins: filteredCoins });
   });
 }
 
 class App extends Component {
   render() {
     return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo"/>
-        <h1 className="App-title">Welcome to React</h1>
-      </header>
-      <button onClick={doThings}>Push me!</button>
-    </div>
+    <Container>
+      <Row>
+        <Col>
+          <Form>
+            <FormGroup>
+              <Label for="base-currency">Base currency:</Label>
+              <Input type="text" name="base-currency" id="base-currency" placeholder="BTC" />
+            </FormGroup>
+            <FormGroup>
+              <Label for="exchange">Exchange</Label>
+              <Input type="select" name="select" id="exchange">
+                <option>Binance</option>
+              </Input>
+            </FormGroup>
+            <Button onClick={selectCoins}>Select coins</Button>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
     );
   }
 }
