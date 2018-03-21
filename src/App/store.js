@@ -1,7 +1,13 @@
-import { pick } from 'lodash-es';
 import { observable, configure, action } from 'mobx';
 
 configure({ enforceActions: true });
+
+const FIELDS_DEFAULTS = {
+  baseCurrency: 'BTC',
+  exchange: 'BINANCE',
+  blacklist: ['BNB', 'USDT'],
+  limit: 50,
+};
 
 export function createStore() {
   let store;
@@ -10,15 +16,19 @@ export function createStore() {
     store.isLoading = isLoading;
   });
 
+  const setField = action((fieldName, value) => {
+    store.fields[fieldName] = value;
+  });
+
   store = observable({
     isLoading: false,
-    fields: {
-      baseCurrency: 'BTC',
-      exchange: 'BINANCE',
-      blacklist: ['BNB', 'USDT'],
-      limit: 50,
+    exchanges: ['BINANCE', 'COINBASE', 'BITTREX', 'KRAKEN', 'POLONIEX'],
+    fields: { ...FIELDS_DEFAULTS },
+    get config() {
+      return store.fields;
     },
     setLoading,
+    setField,
   });
 
   return store;

@@ -20,12 +20,18 @@ class App extends Component {
     super(props);
     this.store = createStore();
     this.selectCoins = this.selectCoins.bind(this);
+    this.setField = this.setField.bind(this);
+  }
+
+  setField(fieldName, value) {
+    const { store } = this;
+    store.setField(fieldName, value);
   }
 
   selectCoins() {
     const { store } = this;
     store.setLoading(true);
-    return fetchCoins(store.fields)
+    return fetchCoins(store.config)
       .then((coins) => sendMessage({ coins }))
       .finally(() => {
         store.setLoading(false);
@@ -40,6 +46,7 @@ class App extends Component {
             <OptionsForm
               store={this.store}
               handleButtonClick={this.selectCoins}
+              handleFieldChange={this.setField}
             />
           </Col>
         </Row>
