@@ -1,5 +1,5 @@
-export const createQuery = () => {
-  return JSON.stringify({
+export const createQuery = () =>
+  JSON.stringify({
     filter: [
       {
         left: 'total_value_traded',
@@ -21,12 +21,7 @@ export const createQuery = () => {
         types: [],
       },
     },
-    columns: [
-      'name',
-      'total_value_traded',
-      'name',
-      'subtype',
-    ],
+    columns: ['name', 'total_value_traded', 'name', 'subtype'],
     sort: {
       sortBy: 'total_value_traded',
       sortOrder: 'desc',
@@ -34,9 +29,5 @@ export const createQuery = () => {
     options: {
       lang: 'en',
     },
-    range: [
-      0,
-      150,
-    ],
+    range: [0, 150],
   });
-};

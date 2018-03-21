@@ -1,0 +1,36 @@
+{
+  "extends": [
+    "eslint-config-airbnb",
+    "eslint-config-prettier",
+    "eslint-config-prettier/react"
+  ],
+  "env": {
+    "node": true
+  },
+  "rules": {
+    "react/prefer-es6-class": "off",
+    "import/no-extraneous-dependencies": "off",
+    "prefer-arrow-callback": [
+      "error",
+      {
+        "allowNamedFunctions": true
+      }
+    ],
+    "arrow-parens": [
+      "error",
+      "always"
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "trailingComma": "es5",
+        "arrowParens": "always",
+        "printWidh": 120
+      }
+    ]
+  },
+  "plugins": [
+    "prettier"
+  ]
+}

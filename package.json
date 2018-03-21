@@ -10,6 +10,16 @@
     "react-scripts": "1.1.1",
     "reactstrap": "^5.0.0-beta.3"
   },
+  "devDependencies": {
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.5.0",
+    "eslint-plugin-react": "^7.5.1",
+    "prettier": "^1.10.2"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
