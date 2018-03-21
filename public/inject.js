@@ -1,8 +1,13 @@
 /* eslint-disable no-undef */
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  const $selectableCoins = $('.ms-selectable .ms-list li');
-  const $selectedCoins = $('.ms-selection .ms-list li');
+const SELECTABLE_COINS_SELECTOR = '.ms-selectable .ms-list li';
+const SELECTED_COINS_SELECTOR = '.ms-selection .ms-list li';
+
+const adapter = chrome || browser; // For cross-browser compatibility
+
+adapter.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  const $selectableCoins = $(SELECTABLE_COINS_SELECTOR);
+  const $selectedCoins = $(SELECTED_COINS_SELECTOR);
   $selectedCoins.click();
 
   function selectSymbol(symbol) {

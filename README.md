@@ -1,16 +1,16 @@
 # CH Companion
 
 ## What's this?
-CH Companion is a Google Chrome extension that lets you auto-select most traded coins using [TradingView](https://www.tradingview.com)'s volume data in CH config page.
+CH Companion is a browser extension that lets you auto-select most traded coins using [TradingView](https://www.tradingview.com)'s volume data in CH config page.
 
 ![image](screenshot.png?raw=true)
 
 ### Disclaimer
 I'm not responsible for any losses you might occur using this software. Use it at your own risk.
 
-### Installation
+### Installation for Chrome
 1. Download the extension from [--> here <--](https://github.com/matteoantoci/ch-companion/raw/master/build.crx)
-1. Drag and drop the downloaded file in your [Chrome Extensions page](chrome://extensions/)
+1. Drag and drop the downloaded file in your Chrome Extensions page (`chrome://extensions/`)
 
 ### Usage
 1. Go to your CH config page
