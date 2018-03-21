@@ -6,7 +6,7 @@ const EXCHANGES = ['BINANCE', 'BITTREX', 'POLONIEX', 'KRAKEN', 'COINBASE'];
 const FIELDS_DEFAULTS = {
   baseCurrency: 'BTC',
   exchange: 'BINANCE',
-  blacklist: ['BNB', 'USDT'],
+  blacklist: ['USDT'],
   limit: 50,
 };
 
