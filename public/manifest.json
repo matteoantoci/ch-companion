@@ -1,16 +1,26 @@
 {
   "short_name": "CH Companion",
   "name": "CH Companion",
+  "description": "Easily select most traded coins (24h volume) in CH config page",
   "manifest_version": 2,
   "browser_action": {
     "default_popup": "index.html",
-    "default_title": "CH Companion"
+    "default_title": "CH Companion",
+    "default_icon": {
+      "16": "icon16.png",
+      "32": "icon32.png",
+      "48": "icon48.png"
+    }
   },
   "version": "1.0",
   "content_scripts": [{
-    "matches": ["https://www.cryptohopper.com/*"],
+    "matches": ["https://www.cryptohopper.com/config"],
     "js": ["jquery-3.3.1.min.js", "inject.js"]
   }],
   "permissions": ["tabs"],
-  "icons": { "16": "icon.png" }
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "48": "icon48.png"
+  }
 }

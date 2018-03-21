@@ -2,6 +2,7 @@ import { observable, configure, action } from 'mobx';
 
 configure({ enforceActions: true });
 
+const EXCHANGES = ['BINANCE', 'BITTREX', 'POLONIEX', 'KRAKEN', 'COINBASE'];
 const FIELDS_DEFAULTS = {
   baseCurrency: 'BTC',
   exchange: 'BINANCE',
@@ -22,7 +23,7 @@ export function createStore() {
 
   store = observable({
     isLoading: false,
-    exchanges: ['BINANCE', 'COINBASE', 'BITTREX', 'KRAKEN', 'POLONIEX'],
+    exchanges: EXCHANGES,
     fields: { ...FIELDS_DEFAULTS },
     get config() {
       return store.fields;
