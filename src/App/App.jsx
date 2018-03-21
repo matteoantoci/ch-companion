@@ -24,32 +24,41 @@ function sendMessage(payload) {
   });
 }
 
-const OptionsForm = observer((props) => {
+const Submit = observer((props) => {
   const { store, handleButtonClick } = props;
-  const Submit = store.isLoading
-    ? () => <Spinner name="line-scale" color="#2E353D" fadeIn="none" />
-    : () => <Button onClick={handleButtonClick}>Select coins</Button>;
-  return (
-    <Form>
-      <FormGroup>
-        <Label for="base-currency">Base currency:</Label>
-        <Input
-          type="text"
-          name="base-currency"
-          id="base-currency"
-          placeholder="BTC"
-        />
-      </FormGroup>
-      <FormGroup>
-        <Label for="exchange">Exchange</Label>
-        <Input type="select" name="select" id="exchange">
-          <option>Binance</option>
-        </Input>
-      </FormGroup>
-      <Submit />
-    </Form>
+  return store.isLoading ? (
+    <Spinner
+      name="line-scale"
+      fadeIn="none"
+      className="App-spinner text-primary"
+    />
+  ) : (
+    <Button color="primary" onClick={handleButtonClick}>
+      Select coins
+    </Button>
   );
 });
+
+const OptionsForm = observer((props) => (
+  <Form>
+    <FormGroup>
+      <Label for="base-currency">Base currency:</Label>
+      <Input
+        type="text"
+        name="base-currency"
+        id="base-currency"
+        placeholder="BTC"
+      />
+    </FormGroup>
+    <FormGroup>
+      <Label for="exchange">Exchange</Label>
+      <Input type="select" name="select" id="exchange">
+        <option>Binance</option>
+      </Input>
+    </FormGroup>
+    <Submit {...props} />
+  </Form>
+));
 
 class App extends Component {
   constructor(props) {
