@@ -5,13 +5,16 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   const $selectableCoins = $('.ms-selectable .ms-list li');
   const $selectedCoins = $('.ms-selection .ms-list li');
   $selectedCoins.click();
-  const getCoinSelector = (symbol) =>
-    $selectableCoins.filter(function() {
+
+  function selectSymbol(symbol) {
+    const $symbol = $selectableCoins.filter(function getDomSelector() {
       const text = $(this).text();
       return text.endsWith(`(${symbol})`);
     });
-  symbolsToSelect.forEach((symbol) => {
-    getCoinSelector(symbol).click();
-  });
+    if (!$symbol.length) return;
+    $symbol.click();
+  }
+
+  symbolsToSelect.forEach(selectSymbol);
   sendResponse({ ok: true });
 });

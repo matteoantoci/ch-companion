@@ -11,6 +11,8 @@ export function createStore() {
 
   store = observable({
     isLoading: false,
+    blacklist: ['BNB'],
+    limit: 50,
     setLoading,
   });
 

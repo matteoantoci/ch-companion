@@ -23,16 +23,13 @@ class App extends Component {
   }
 
   selectCoins() {
-    this.store.setLoading(true);
-    return fetchCoins()
-      .then((coins) => {
-        const filteredCoins = coins
-          .filter((coin) => coin !== 'BNB')
-          .slice(0, 50);
-        return sendMessage({ coins: filteredCoins });
-      })
+    const { store } = this;
+    store.setLoading(true);
+    const config = { limit: store.limit, blacklist: store.blacklist };
+    return fetchCoins(config)
+      .then((coins) => sendMessage({ coins }))
       .finally(() => {
-        this.store.setLoading(false);
+        store.setLoading(false);
       });
   }
 
