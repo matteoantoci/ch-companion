@@ -12,7 +12,7 @@
       "48": "icon48.png"
     }
   },
-  "version": "1.0",
+  "version": "0.0.1",
   "content_scripts": [{
     "matches": ["https://www.cryptohopper.com/config"],
     "js": ["jquery-3.3.1.min.js", "inject.js"]
