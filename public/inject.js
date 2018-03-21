@@ -11,7 +11,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       return text.endsWith(`(${symbol})`);
     });
   symbolsToSelect.forEach((symbol) => {
-    console.log(symbol);
     getCoinSelector(symbol).click();
   });
   sendResponse({ ok: true });
