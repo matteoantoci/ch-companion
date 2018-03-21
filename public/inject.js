@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  const symbolsToSelect = request.coins || [];
   const $selectableCoins = $('.ms-selectable .ms-list li');
   const $selectedCoins = $('.ms-selection .ms-list li');
   $selectedCoins.click();
@@ -15,6 +14,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     $symbol.click();
   }
 
+  const symbolsToSelect = request.coins || [];
   symbolsToSelect.forEach(selectSymbol);
   sendResponse({ ok: true });
 });

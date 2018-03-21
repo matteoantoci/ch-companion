@@ -25,8 +25,7 @@ class App extends Component {
   selectCoins() {
     const { store } = this;
     store.setLoading(true);
-    const config = { limit: store.limit, blacklist: store.blacklist };
-    return fetchCoins(config)
+    return fetchCoins(store.fields)
       .then((coins) => sendMessage({ coins }))
       .finally(() => {
         store.setLoading(false);

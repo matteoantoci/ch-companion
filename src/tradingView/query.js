@@ -1,27 +1,19 @@
-export const createQuery = () =>
-  JSON.stringify({
+export const createQuery = (config) => {
+  const { exchange, baseCurrency } = config;
+  return JSON.stringify({
     filter: [
-      {
-        left: 'total_value_traded',
-        operation: 'nempty',
-      },
       {
         left: 'exchange',
         operation: 'equal',
-        right: 'BINANCE',
+        right: exchange.toUpperCase(),
       },
       {
         left: 'name',
         operation: 'match',
-        right: 'btc',
+        right: baseCurrency.toLowerCase(),
       },
     ],
-    symbols: {
-      query: {
-        types: [],
-      },
-    },
-    columns: ['name', 'total_value_traded', 'name', 'subtype'],
+    columns: ['name', 'total_value_traded'],
     sort: {
       sortBy: 'total_value_traded',
       sortOrder: 'desc',
@@ -31,3 +23,4 @@ export const createQuery = () =>
     },
     range: [0, 150],
   });
+};

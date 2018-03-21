@@ -1,3 +1,4 @@
+import { pick } from 'lodash-es';
 import { observable, configure, action } from 'mobx';
 
 configure({ enforceActions: true });
@@ -11,8 +12,12 @@ export function createStore() {
 
   store = observable({
     isLoading: false,
-    blacklist: ['BNB'],
-    limit: 50,
+    fields: {
+      baseCurrency: 'BTC',
+      exchange: 'BINANCE',
+      blacklist: ['BNB', 'USDT'],
+      limit: 50,
+    },
     setLoading,
   });
 
