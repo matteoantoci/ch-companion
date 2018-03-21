@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import { observer } from 'mobx-react';
 import './App.css';
+import logo from '../logo.png';
 import { fetchCoins } from '../tradingView/gateway';
 import { createStore } from './store';
 import { OptionsForm } from './OptionsForm';
@@ -41,6 +42,11 @@ class App extends Component {
   render() {
     return (
       <Container>
+        <Row>
+          <Col>
+            <img src={logo} alt="logo" className="App-logo" />
+          </Col>
+        </Row>
         <Row>
           <Col>
             <OptionsForm
