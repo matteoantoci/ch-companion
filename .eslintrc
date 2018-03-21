@@ -5,7 +5,8 @@
     "eslint-config-prettier/react"
   ],
   "env": {
-    "node": true
+    "node": true,
+    "browser": true
   },
   "rules": {
     "react/prefer-es6-class": "off",
