@@ -1,3 +1,7 @@
+# 0.0.3
+
+* Switched to jQuery Slim
+
 # 0.0.2
 
 * Firefox supported
