@@ -25,7 +25,7 @@ I'm not responsible for any losses you might occur using this software. Use it a
 ### Usage
 1. Go to your CH config page
 1. Click on the extension icon
-1. Set preferences. **Watch out**: Blacklist accepts comma separated values! Eg: `USDT, BNB.
+1. Set preferences. **Watch out**: Blacklist accepts comma separated values! Eg: `USDT, BNB`.
 1. Click on the "Select coins" button
 
 That's it!
