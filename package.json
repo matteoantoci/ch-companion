@@ -28,7 +28,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && cp node_modules/jquery/dist/jquery.slim.min.js build",
+    "build": "rm build/*.*; react-scripts build && cp node_modules/jquery/dist/jquery.slim.min.js build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "package": "npm run build && ./pack.sh"
