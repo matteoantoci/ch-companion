@@ -1,3 +1,7 @@
+# 0.0.4
+
+* Added multiple sort options
+
 # 0.0.3
 
 * Switched to jQuery Slim
