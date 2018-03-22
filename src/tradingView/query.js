@@ -1,5 +1,5 @@
 export const createQuery = (config) => {
-  const { exchange, baseCurrency } = config;
+  const { exchange, baseCurrency, sortBy } = config;
   return JSON.stringify({
     filter: [
       {
@@ -13,9 +13,9 @@ export const createQuery = (config) => {
         right: baseCurrency.toLowerCase(),
       },
     ],
-    columns: ['name', 'total_value_traded'],
+    columns: ['name'],
     sort: {
-      sortBy: 'total_value_traded',
+      sortBy,
       sortOrder: 'desc',
     },
     options: {

@@ -62,6 +62,22 @@ export const OptionsForm = observer((props) => {
           onChange={createListHandler('blacklist')}
         />
       </FormGroup>
+      <FormGroup>
+        <Label for="sortBy">Sort by:</Label>
+        <Input
+          type="select"
+          name="select"
+          id="sortBy"
+          value={store.fields.sortBy}
+          onChange={createHandler('sortBy')}
+        >
+          {store.sortOptions.map(({ key, label }) => (
+            <option value={key} key={key}>
+              {label}
+            </option>
+          ))}
+        </Input>
+      </FormGroup>
       <Submit {...props} />
     </Form>
   );
