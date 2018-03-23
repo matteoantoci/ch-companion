@@ -1,3 +1,9 @@
+# 0.1.0
+
+* Added `volatility` filter
+* Improved `rating` filter
+* Improved layout
+
 # 0.0.6
 
 * Switched to 24h candles
