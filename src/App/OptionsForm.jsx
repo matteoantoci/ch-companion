@@ -53,7 +53,7 @@ export const OptionsForm = observer((props) => {
         fieldName="volatility"
         label="Volatility"
         store={store}
-        handleChange={createListHandler('volatility')}
+        handleChange={createHandler('volatility')}
       />
       <Field
         fieldName="rating"
