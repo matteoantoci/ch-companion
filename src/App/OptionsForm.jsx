@@ -1,8 +1,9 @@
 import { trim } from 'lodash-es';
 import React from 'react';
-import { Form, FormGroup, Label, Input } from 'reactstrap';
+import { Form, FormGroup, Col } from 'reactstrap';
 import { observer } from 'mobx-react';
 import { Submit } from './Submit';
+import { Field } from './Field';
 
 function formatListValue(value) {
   return value.split(',').map(trim);
@@ -16,79 +17,62 @@ export const OptionsForm = observer((props) => {
     handleFieldChange(fieldName, formatListValue(event.target.value));
   return (
     <Form>
-      <FormGroup>
-        <Label for="exchange">Exchange:</Label>
-        <Input
-          type="select"
-          name="exchange"
-          id="exchange"
-          value={store.fields.exchange}
-          onChange={createHandler('exchange')}
-        >
-          {store.exchanges.map((value) => (
-            <option value={value} key={value}>
-              {value}
-            </option>
-          ))}
-        </Input>
+      <Field
+        fieldName="exchange"
+        label="Exchange"
+        type="select"
+        store={store}
+        handleChange={createHandler('exchange')}
+      >
+        {store.exchanges.map((value) => (
+          <option value={value} key={value}>
+            {value}
+          </option>
+        ))}
+      </Field>
+      <Field
+        fieldName="baseCurrency"
+        label="Base currency"
+        store={store}
+        handleChange={createHandler('baseCurrency')}
+      />
+      <Field
+        fieldName="limit"
+        label="Limit"
+        store={store}
+        handleChange={createHandler('limit')}
+      />
+      <Field
+        fieldName="blacklist"
+        label="Blacklisted coins"
+        store={store}
+        value={store.fields.blacklist.join(', ')}
+        handleChange={createListHandler('blacklist')}
+      />
+      <Field
+        fieldName="volatility"
+        label="Volatility"
+        store={store}
+        handleChange={createListHandler('volatility')}
+      />
+      <Field
+        fieldName="rating"
+        label="Rating filter"
+        type="select"
+        store={store}
+        handleChange={createHandler('rating')}
+      >
+        {store.ratingFilters.map(({ value, label }) => (
+          <option value={value} key={value}>
+            {label}
+          </option>
+        ))}
+      </Field>
+      <FormGroup row>
+        <Col>
+          <Submit {...props} />
+        </Col>
       </FormGroup>
-      <FormGroup>
-        <Label for="base-currency">Base currency:</Label>
-        <Input
-          type="text"
-          name="base-currency"
-          id="base-currency"
-          onChange={createHandler('baseCurrency')}
-          value={store.fields.baseCurrency}
-        />
-      </FormGroup>
-      <FormGroup>
-        <Label for="limit">Limit:</Label>
-        <Input
-          type="text"
-          name="limit"
-          id="limit"
-          value={store.fields.limit}
-          onChange={createHandler('limit')}
-        />
-      </FormGroup>
-      <FormGroup>
-        <Label for="blacklist">Blacklisted coins:</Label>
-        <Input
-          type="text"
-          name="blacklist"
-          id="blacklist"
-          value={store.fields.blacklist.join(', ')}
-          onChange={createListHandler('blacklist')}
-        />
-      </FormGroup>
-      <FormGroup>
-        <Label for="limit">Volatility (equal or above):</Label>
-        <Input
-          type="text"
-          name="volatility"
-          id="volatility"
-          value={store.fields.volatility}
-          onChange={createHandler('volatility')}
-        />
-      </FormGroup>
-      <FormGroup>
-        <Label for="exchange">Rating filter:</Label>
-        <Input
-          type="select"
-          name="rating"
-          id="rating"
-          value={store.fields.rating}
-          onChange={createHandler('rating')}
-        >
-          {store.ratingFilters.map(({ value, label }) => (
-            <option value={value} key={value}>
-              {label}
-            </option>
-          ))}
-        </Input>
-      </FormGroup>
-      <Submit {...props} />
     </Form>
   );
 });
