@@ -1,3 +1,7 @@
+# 0.1.1
+
+* Fixed optional filters features
+
 # 0.1.0
 
 * Added `volatility` filter
