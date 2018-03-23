@@ -12,7 +12,7 @@ export const Submit = observer((props) => {
       className="App-spinner text-primary"
     />
   ) : (
-    <Button color="primary" onClick={handleButtonClick}>
+    <Button color="primary" onClick={handleButtonClick} className="App-submit">
       Select coins
     </Button>
   );

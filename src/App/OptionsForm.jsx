@@ -12,6 +12,8 @@ export const OptionsForm = observer((props) => {
   const { store, handleFieldChange } = props;
   const createHandler = (fieldName) => (event) =>
     handleFieldChange(fieldName, event.target.value);
+  const createCheckboxHandler = (fieldName) => (event) =>
+    handleFieldChange(fieldName, event.target.checked);
   const createListHandler = (fieldName) => (event) =>
     handleFieldChange(fieldName, formatListValue(event.target.value));
   return (
@@ -62,21 +64,15 @@ export const OptionsForm = observer((props) => {
           onChange={createListHandler('blacklist')}
         />
       </FormGroup>
-      <FormGroup>
-        <Label for="sortBy">Sort by:</Label>
-        <Input
-          type="select"
-          name="select"
-          id="sortBy"
-          value={store.fields.sortBy}
-          onChange={createHandler('sortBy')}
-        >
-          {store.sortOptions.map(({ key, label }) => (
-            <option value={key} key={key}>
-              {label}
-            </option>
-          ))}
-        </Input>
+      <FormGroup check>
+        <Label check>
+          <Input
+            type="checkbox"
+            checked={store.fields.isOscillatorsRatingEnabled}
+            onChange={createCheckboxHandler('isOscillatorsRatingEnabled')}
+          />
+          Filter by oscillators rating
+        </Label>
       </FormGroup>
       <Submit {...props} />
     </Form>

@@ -3,25 +3,10 @@
 }
 
 .App-logo {
-  margin-bottom: 10px;
+  margin-bottom: 1em;
   height: 48px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-.App-spinner {
-  height: 38px;
+.App-submit {
+  margin-top: 1em;
 }

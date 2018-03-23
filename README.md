@@ -5,8 +5,19 @@ CH Companion is a browser extension that lets you auto-select most traded coins 
 
 ![image](screenshot.png?raw=true)
 
+### How does it work?
+When you press the "Select coin" button, CH Companion queries TradingView for latest data with this strategy:
+  * It orders by `volume DESC`, using 24h candles
+  * It filters by the `exchange` and `base currency` you have input
+  * It throws away from the results the currencies you have put in the `blacklist`
+  * It **optionally** filters out the results that don't match the `Oscillators rating` requirements (*Strong buy*, *buy* and *neutral*)
+  * Limiting the results to the number of coins you have input in `limit`
+  
+And finally it will auto-select the resulting coins on your CH config page.
+
 ### Disclaimer
-I'm not responsible for any losses you might occur using this software. Use it at your own risk.
+1. I'm not responsible for any losses you might occur using this software. Use it at your own risk.
+1. Since data come from a third party website (TradingView) the results may not be consistent with data shown on your exchange website (eg: Volume on Binance).
 
 ### Installation for Firefox
 1. Download the XPI extension from [--> here <--](https://github.com/matteoantoci/ch-companion/raw/master/dist/ch-companion.xpi)
