@@ -12,8 +12,8 @@ const FIELDS_DEFAULTS = {
   baseCurrency: 'BTC',
   exchange: 'BINANCE',
   blacklist: ['USDT'],
-  limit: 50,
-  volatility: 0,
+  limit: '50',
+  volatility: '',
   rating: RATING_FILTERS[0].value,
 };
 

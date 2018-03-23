@@ -1,5 +1,7 @@
+const checkValue = (value) => !!(value && value.length);
+
 function createOscillatorsRatingFilter(rating) {
-  return rating && rating.length
+  return checkValue(rating)
     ? {
         filterOR: [
           {
@@ -23,29 +25,37 @@ function createOscillatorsRatingFilter(rating) {
 }
 
 function createVolatilityFilter(volatility) {
-  return {
-    left: 'Volatility.D',
-    operation: 'egreater',
-    right: parseInt(volatility, 10),
-  };
+  return checkValue(volatility)
+    ? {
+        left: 'Volatility.D',
+        operation: 'egreater',
+        right: parseInt(volatility, 10),
+      }
+    : null;
+}
+
+function createBaseFilters(config) {
+  const { exchange, baseCurrency, volatility } = config;
+  const filters = [
+    {
+      left: 'exchange',
+      operation: 'equal',
+      right: exchange.toUpperCase(),
+    },
+    {
+      left: 'name',
+      operation: 'match',
+      right: baseCurrency.toLowerCase(),
+    },
+  ];
+  const optionalFilters = [createVolatilityFilter(volatility)].filter(Boolean);
+  return filters.concat(optionalFilters);
 }
 
 export const createQuery = (config) => {
-  const { exchange, baseCurrency, rating, volatility } = config;
+  const { rating } = config;
   return JSON.stringify({
-    filter: [
-      {
-        left: 'exchange',
-        operation: 'equal',
-        right: exchange.toUpperCase(),
-      },
-      {
-        left: 'name',
-        operation: 'match',
-        right: baseCurrency.toLowerCase(),
-      },
-      ...createVolatilityFilter(volatility),
-    ],
+    filter: createBaseFilters(config),
     ...createOscillatorsRatingFilter(rating),
     columns: ['name'],
     sort: {
