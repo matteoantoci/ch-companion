@@ -19,6 +19,7 @@ And finally it will auto-select the resulting coins on your CH config page.
 ### Disclaimer
 1. I'm not responsible for any losses you might occur using this software. Use it at your own risk.
 1. Since data come from a third party website (TradingView) the results may not be consistent with data shown on your exchange website (eg: Volume on Binance).
+1. Always check the selected currencies before applying changes
 
 ### Installation for Firefox
 1. Download the XPI extension from [--> here <--](https://github.com/matteoantoci/ch-companion/raw/master/dist/ch-companion.xpi)
