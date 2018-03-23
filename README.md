@@ -10,6 +10,7 @@ When you press the "Select coin" button, CH Companion queries TradingView for la
   * It orders by `volume DESC`, using 24h candles
   * It filters by the `exchange` and `base currency` you have input
   * It throws away from the results the currencies you have put in the `blacklist` field
+  * It **optionally** filters out the results that don't match the `volatility` threshold
   * It **optionally** filters out the results that don't match the `Oscillators rating` requirements (*Strong buy*, *buy* and *neutral*)
   * It limits the results to the number of coins you have input in `limit` field
   
