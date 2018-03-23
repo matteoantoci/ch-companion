@@ -12,8 +12,6 @@ export const OptionsForm = observer((props) => {
   const { store, handleFieldChange } = props;
   const createHandler = (fieldName) => (event) =>
     handleFieldChange(fieldName, event.target.value);
-  const createCheckboxHandler = (fieldName) => (event) =>
-    handleFieldChange(fieldName, event.target.checked);
   const createListHandler = (fieldName) => (event) =>
     handleFieldChange(fieldName, formatListValue(event.target.value));
   return (
@@ -22,7 +20,7 @@ export const OptionsForm = observer((props) => {
         <Label for="exchange">Exchange:</Label>
         <Input
           type="select"
-          name="select"
+          name="exchange"
           id="exchange"
           value={store.fields.exchange}
           onChange={createHandler('exchange')}
@@ -55,6 +53,16 @@ export const OptionsForm = observer((props) => {
         />
       </FormGroup>
       <FormGroup>
+        <Label for="blacklist">Blacklisted coins:</Label>
+        <Input
+          type="text"
+          name="blacklist"
+          id="blacklist"
+          value={store.fields.blacklist.join(', ')}
+          onChange={createListHandler('blacklist')}
+        />
+      </FormGroup>
+      <FormGroup>
         <Label for="limit">Volatility (equal or above):</Label>
         <Input
           type="text"
@@ -65,24 +73,20 @@ export const OptionsForm = observer((props) => {
         />
       </FormGroup>
       <FormGroup>
-        <Label for="blacklist">Blacklisted coins:</Label>
+        <Label for="exchange">Rating filter:</Label>
         <Input
-          type="text"
-          name="blacklist"
-          id="blacklist"
-          value={store.fields.blacklist.join(', ')}
-          onChange={createListHandler('blacklist')}
-        />
-      </FormGroup>
-      <FormGroup check>
-        <Label check>
-          <Input
-            type="checkbox"
-            checked={store.fields.isOscillatorsRatingEnabled}
-            onChange={createCheckboxHandler('isOscillatorsRatingEnabled')}
-          />
-          Filter by oscillators rating
-        </Label>
+          type="select"
+          name="rating"
+          id="rating"
+          value={store.fields.rating}
+          onChange={createHandler('rating')}
+        >
+          {store.ratingFilters.map(({ value, label }) => (
+            <option value={value} key={value}>
+              {label}
+            </option>
+          ))}
+        </Input>
       </FormGroup>
       <Submit {...props} />
     </Form>

@@ -3,13 +3,18 @@ import { observable, configure, action } from 'mobx';
 configure({ enforceActions: true });
 
 const EXCHANGES = ['BINANCE', 'BITTREX', 'POLONIEX', 'KRAKEN', 'COINBASE'];
+const RATING_FILTERS = [
+  { value: '', label: 'None' },
+  { value: 'Recommend.All', label: 'Rating' },
+  { value: 'Recommend.Other', label: 'Oscillators rating' },
+];
 const FIELDS_DEFAULTS = {
   baseCurrency: 'BTC',
   exchange: 'BINANCE',
   blacklist: ['USDT'],
   limit: 50,
   volatility: 0,
-  isOscillatorsRatingEnabled: false,
+  rating: RATING_FILTERS[0].value,
 };
 
 export function createStore() {
@@ -26,6 +31,7 @@ export function createStore() {
   store = observable({
     isLoading: false,
     exchanges: EXCHANGES,
+    ratingFilters: RATING_FILTERS,
     fields: { ...FIELDS_DEFAULTS },
     get config() {
       return store.fields;

@@ -1,19 +1,19 @@
-function createOscillatorsRatingFilter(isOscillatorsRatingEnabled) {
-  return isOscillatorsRatingEnabled
+function createOscillatorsRatingFilter(rating) {
+  return rating && rating.length
     ? {
         filterOR: [
           {
-            left: 'Recommend.Other',
+            left: rating,
             operation: 'in_range',
             right: [0.5, 1], // Strong buy
           },
           {
-            left: 'Recommend.Other',
+            left: rating,
             operation: 'in_range',
             right: [0, 0.5], // Buy
           },
           {
-            left: 'Recommend.Other',
+            left: rating,
             operation: 'equal',
             right: 0, // Neutral
           },
@@ -22,13 +22,16 @@ function createOscillatorsRatingFilter(isOscillatorsRatingEnabled) {
     : {};
 }
 
+function createVolatilityFilter(volatility) {
+  return {
+    left: 'Volatility.D',
+    operation: 'egreater',
+    right: parseInt(volatility, 10),
+  };
+}
+
 export const createQuery = (config) => {
-  const {
-    exchange,
-    baseCurrency,
-    isOscillatorsRatingEnabled,
-    volatility,
-  } = config;
+  const { exchange, baseCurrency, rating, volatility } = config;
   return JSON.stringify({
     filter: [
       {
@@ -41,13 +44,9 @@ export const createQuery = (config) => {
         operation: 'match',
         right: baseCurrency.toLowerCase(),
       },
-      {
-        left: 'Volatility.D',
-        operation: 'egreater',
-        right: parseInt(volatility, 10),
-      },
+      ...createVolatilityFilter(volatility),
     ],
-    ...createOscillatorsRatingFilter(isOscillatorsRatingEnabled),
+    ...createOscillatorsRatingFilter(rating),
     columns: ['name'],
     sort: {
       sortBy: 'volume', // 24h volume
@@ -56,6 +55,6 @@ export const createQuery = (config) => {
     options: {
       lang: 'en',
     },
-    range: [0, 150],
+    range: [0, 75],
   });
 };
