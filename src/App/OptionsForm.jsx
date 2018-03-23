@@ -55,6 +55,16 @@ export const OptionsForm = observer((props) => {
         />
       </FormGroup>
       <FormGroup>
+        <Label for="limit">Volatility (equal or above):</Label>
+        <Input
+          type="text"
+          name="volatility"
+          id="volatility"
+          value={store.fields.volatility}
+          onChange={createHandler('volatility')}
+        />
+      </FormGroup>
+      <FormGroup>
         <Label for="blacklist">Blacklisted coins:</Label>
         <Input
           type="text"

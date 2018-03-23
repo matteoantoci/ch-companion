@@ -23,7 +23,12 @@ function createOscillatorsRatingFilter(isOscillatorsRatingEnabled) {
 }
 
 export const createQuery = (config) => {
-  const { exchange, baseCurrency, isOscillatorsRatingEnabled } = config;
+  const {
+    exchange,
+    baseCurrency,
+    isOscillatorsRatingEnabled,
+    volatility,
+  } = config;
   return JSON.stringify({
     filter: [
       {
@@ -35,6 +40,11 @@ export const createQuery = (config) => {
         left: 'name',
         operation: 'match',
         right: baseCurrency.toLowerCase(),
+      },
+      {
+        left: 'Volatility.D',
+        operation: 'egreater',
+        right: parseInt(volatility, 10),
       },
     ],
     ...createOscillatorsRatingFilter(isOscillatorsRatingEnabled),

@@ -8,6 +8,7 @@ const FIELDS_DEFAULTS = {
   exchange: 'BINANCE',
   blacklist: ['USDT'],
   limit: 50,
+  volatility: 0,
   isOscillatorsRatingEnabled: false,
 };
 
