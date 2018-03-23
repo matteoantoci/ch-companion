@@ -9,9 +9,9 @@ CH Companion is a browser extension that lets you auto-select most traded coins 
 When you press the "Select coin" button, CH Companion queries TradingView for latest data with this strategy:
   * It orders by `volume DESC`, using 24h candles
   * It filters by the `exchange` and `base currency` you have input
-  * It throws away from the results the currencies you have put in the `blacklist`
+  * It throws away from the results the currencies you have put in the `blacklist` field
   * It **optionally** filters out the results that don't match the `Oscillators rating` requirements (*Strong buy*, *buy* and *neutral*)
-  * Limiting the results to the number of coins you have input in `limit`
+  * It limits the results to the number of coins you have input in `limit` field
   
 And finally it will auto-select the resulting coins on your CH config page.
 
