@@ -49,8 +49,9 @@ Default settings are read from `settings.json`, you can easily edit it in your u
 Changes are automatically applied next time you click on the extension icon.
 
 Additional info: 
-* For overall rating use `'Recommend.All'`
-* For oscillators rating use: `'Recommend.Other'`
+* For blacklist use a JSON array. Eg: `"blacklist": ["USDT", "BNB"]`
+* For overall rating use the string `"Recommend.All"`
+* For oscillators rating use the string `"Recommend.Other"`
 
 ### To do
 1. Proper logo
