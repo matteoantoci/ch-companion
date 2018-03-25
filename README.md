@@ -18,7 +18,7 @@ And finally it will auto-select the resulting coins on your CH config page.
 
 ### Disclaimer
 1. I'm not responsible for any losses you might occur using this software. Use it at your own risk.
-1. Since data come from a third party website (TradingView) the results may not be consistent with data shown on your exchange website (eg: Volume on Binance).
+1. Since data comes from a third party website (TradingView) the results may not be consistent with the data shown on your exchange website (eg: Volume on Binance).
 1. Always check the selected currencies before applying changes
 
 ### Installation for Firefox
@@ -44,7 +44,9 @@ And finally it will auto-select the resulting coins on your CH config page.
 That's it!
 
 ### Default settings
-Default settings are read from `settings.json`, you can easily edit it in your unpacked extension's folder.
+Default settings are read from `settings.json`, you can easily edit it in your unpacked extension's folder. 
+
+Changes are automatically applied next time you click on the extension icon.
 
 ### To do
 1. Proper logo
@@ -54,7 +56,7 @@ Default settings are read from `settings.json`, you can easily edit it in your u
 1. Buy a Lambo
 
 ### Donations
-This software is free and open source. You may want to consider buying me a beer :beers:
+This software is free and open source. You may want to consider buying me a "crypto-beer" =)
 
 **BTC**: 38geEMmy5kWStY6GziEUnPBDpmyNQBhGqz
 
