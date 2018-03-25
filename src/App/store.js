@@ -9,12 +9,12 @@ const RATING_FILTERS = [
   { value: 'Recommend.Other', label: 'Oscillators rating' },
 ];
 const FIELDS_DEFAULTS = {
-  baseCurrency: 'BTC',
-  exchange: 'BINANCE',
-  blacklist: ['USDT'],
-  limit: '50',
+  baseCurrency: '',
+  exchange: '',
+  blacklist: [],
+  limit: '',
   volatility: '',
-  rating: RATING_FILTERS[0].value,
+  rating: '',
 };
 
 export function createStore() {

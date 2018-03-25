@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+import { forEach } from 'lodash-es';
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import { observer } from 'mobx-react';
@@ -7,6 +8,7 @@ import logo from '../logo.png';
 import { fetchCoins } from '../tradingView/gateway';
 import { createStore } from './store';
 import { OptionsForm } from './OptionsForm';
+import { loadSettings } from '../settings';
 
 const TABS_QUERY = { active: true, currentWindow: true };
 
@@ -28,11 +30,27 @@ class App extends Component {
     this.store = createStore();
     this.selectCoins = this.selectCoins.bind(this);
     this.setField = this.setField.bind(this);
+    this.loadSettings = this.loadSettings.bind(this);
+    this.loadSettings();
   }
 
   setField(fieldName, value) {
     const { store } = this;
     store.setField(fieldName, value);
+  }
+
+  loadSettings() {
+    const { store } = this;
+    store.setLoading(true);
+    return loadSettings()
+      .then((settings) => {
+        forEach(settings, (value, fieldName) => {
+          store.setField(fieldName, value);
+        });
+      })
+      .finally(() => {
+        store.setLoading(false);
+      });
   }
 
   selectCoins() {
