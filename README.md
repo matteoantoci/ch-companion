@@ -48,6 +48,10 @@ Default settings are read from `settings.json`, you can easily edit it in your u
 
 Changes are automatically applied next time you click on the extension icon.
 
+Additional info: 
+* For overall rating use `'Recommend.All'`
+* For oscillators rating use: `'Recommend.Other'`
+
 ### To do
 1. Proper logo
 1. Add save/load config feature
@@ -58,8 +62,8 @@ Changes are automatically applied next time you click on the extension icon.
 ### Donations
 This software is free and open source. You may want to consider buying me a "crypto-beer" =)
 
-**BTC**: 38geEMmy5kWStY6GziEUnPBDpmyNQBhGqz
+**BTC**: 1ER32tJqr4ApakJtzAPQfGyQnn4DJD8P6i
 
-**ETH**: 0x3DE1905bF0b23ff38dE3369B2d7bed32173e4cb0
+**ETH**: 0xae4a91c06542514cccd573cab52b8b1c66f0c342
 
-**LTC**: MLPjwTq1i8p75SUb977S9dD244gbXViAs2
+**LTC**: LYcxLoTdtYX73zxdHWxjnMzTHoMQ5mEkWZ
