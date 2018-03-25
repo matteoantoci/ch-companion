@@ -1,3 +1,8 @@
+# 0.2.0
+
+* Settings are now externalized in `settings.json`. XPI extension has been removed to let everyone edit `settings.json` more easily.
+* Volatility now supports fractional numbers
+
 # 0.1.1
 
 * Fixed optional filters features
