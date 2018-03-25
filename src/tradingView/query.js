@@ -29,7 +29,7 @@ function createVolatilityFilter(volatility) {
     ? {
         left: 'Volatility.D',
         operation: 'egreater',
-        right: parseInt(volatility, 10),
+        right: parseFloat(volatility),
       }
     : null;
 }
