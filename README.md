@@ -22,11 +22,9 @@ And finally it will auto-select the resulting coins on your CH config page.
 1. Always check the selected currencies before applying changes
 
 ### Installation for Firefox
-1. Download the extension from [--> here <--](https://github.com/matteoantoci/ch-companion/raw/master/dist/ch-companion.zip)
-1. Extract the zip file
-1. Go to the debugging page in Firefox (`about:debugging`)
-1. Click on the "Load Temporary Add-on" button
-1. Select the `manifest.json` file in your unzipped extension folder
+1. Download the XPI extension from [--> here <--](https://github.com/matteoantoci/ch-companion/raw/master/dist/ch-companion.xpi)
+1. Go to the Add-ons page in Firefox (`about:addons`)
+1. Drag-and-drop the downloaded file in this page
 
 ### Installation for Chrome
 1. Download the ZIP extension from [--> here <--](https://github.com/matteoantoci/ch-companion/raw/master/dist/ch-companion.zip)
