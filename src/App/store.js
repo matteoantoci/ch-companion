@@ -33,7 +33,7 @@ export function createStore() {
     exchanges: EXCHANGES,
     ratingFilters: RATING_FILTERS,
     fields: { ...FIELDS_DEFAULTS },
-    get config() {
+    get settings() {
       return store.fields;
     },
     setLoading,

@@ -1,4 +1,4 @@
-import { forEach } from 'lodash-es';
+import { forEach, isUndefined } from 'lodash-es';
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import { observer } from 'mobx-react';
@@ -26,10 +26,12 @@ class App extends Component {
 
   loadSettings() {
     const { store } = this;
+    const { settings } = store;
     store.setLoading(true);
     return loadSettings()
       .then(({ data }) => {
         forEach(data, (value, fieldName) => {
+          if (isUndefined(settings[fieldName])) return;
           store.setField(fieldName, value);
         });
       })
@@ -40,10 +42,11 @@ class App extends Component {
 
   selectCoins() {
     const { store } = this;
+    const { settings } = store;
     store.setLoading(true);
-    return fetchCoins(store.config)
+    return fetchCoins(settings)
       .then((coins) => selectCoins({ coins }))
-      .then(() => saveSettings({ settings: store.config }))
+      .then(() => saveSettings({ settings }))
       .finally(() => {
         store.setLoading(false);
       });

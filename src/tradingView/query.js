@@ -34,8 +34,8 @@ function createVolatilityFilter(volatility) {
     : null;
 }
 
-function createBaseFilters(config) {
-  const { exchange, baseCurrency, volatility } = config;
+function createBaseFilters(settings) {
+  const { exchange, baseCurrency, volatility } = settings;
   const filters = [
     {
       left: 'exchange',
@@ -52,10 +52,10 @@ function createBaseFilters(config) {
   return filters.concat(optionalFilters);
 }
 
-export const createQuery = (config) => {
-  const { rating } = config;
+export const createQuery = (settings) => {
+  const { rating } = settings;
   return JSON.stringify({
-    filter: createBaseFilters(config),
+    filter: createBaseFilters(settings),
     ...createOscillatorsRatingFilter(rating),
     columns: ['name'],
     sort: {
