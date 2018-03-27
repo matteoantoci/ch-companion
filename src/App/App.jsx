@@ -7,8 +7,7 @@ import logo from '../logo.png';
 import { fetchCoins } from '../tradingView/gateway';
 import { createStore } from './store';
 import { OptionsForm } from './OptionsForm';
-import { loadSettings } from '../settings';
-import { selectCoins } from '../commands';
+import { selectCoins, saveSettings, loadSettings } from '../commands';
 
 class App extends Component {
   constructor(props) {
@@ -29,8 +28,8 @@ class App extends Component {
     const { store } = this;
     store.setLoading(true);
     return loadSettings()
-      .then((settings) => {
-        forEach(settings, (value, fieldName) => {
+      .then(({ data }) => {
+        forEach(data, (value, fieldName) => {
           store.setField(fieldName, value);
         });
       })
@@ -44,6 +43,7 @@ class App extends Component {
     store.setLoading(true);
     return fetchCoins(store.config)
       .then((coins) => selectCoins({ coins }))
+      .then(() => saveSettings({ settings: store.config }))
       .finally(() => {
         store.setLoading(false);
       });

@@ -19,3 +19,15 @@ export function selectCoins({ coins }) {
   const payload = { command, coins };
   return sendMessage(payload);
 }
+
+export function loadSettings() {
+  const command = 'loadSettings';
+  const payload = { command };
+  return sendMessage(payload);
+}
+
+export function saveSettings({ settings }) {
+  const command = 'saveSettings';
+  const payload = { command, settings };
+  return sendMessage(payload);
+}

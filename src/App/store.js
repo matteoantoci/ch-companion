@@ -2,7 +2,7 @@ import { observable, configure, action } from 'mobx';
 
 configure({ enforceActions: true });
 
-const EXCHANGES = ['BINANCE', 'BITTREX', 'POLONIEX', 'KRAKEN', 'COINBASE'];
+const EXCHANGES = ['', 'BINANCE', 'BITTREX', 'POLONIEX', 'KRAKEN', 'COINBASE'];
 const RATING_FILTERS = [
   { value: '', label: 'None' },
   { value: 'Recommend.All', label: 'Rating' },

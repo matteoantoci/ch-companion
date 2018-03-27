@@ -1,8 +1,0 @@
-{
-  "baseCurrency": "BTC",
-  "exchange": "BINANCE",
-  "blacklist": ["USDT"],
-  "limit": "50",
-  "volatility": "",
-  "rating": ""
-}
