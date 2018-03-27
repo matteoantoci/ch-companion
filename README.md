@@ -43,19 +43,8 @@ And finally it will auto-select the resulting coins on your CH config page.
 
 That's it!
 
-### Default settings
-Default settings are read from `settings.json`, you can easily edit it in your unpacked extension's folder. 
-
-Changes are automatically applied next time you click on the extension icon.
-
-Additional info: 
-* For blacklist use a JSON array. Eg: `"blacklist": ["USDT", "BNB"]`
-* For overall rating use the string `"Recommend.All"`
-* For oscillators rating use the string `"Recommend.Other"`
-
 ### To do
 1. Proper logo
-1. Add save/load config feature
 1. Publish this on Chrome Web Store
 1. Publish this on Firefox Add-ons
 1. Buy a Lambo
