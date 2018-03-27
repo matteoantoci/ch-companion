@@ -1,3 +1,8 @@
+# 0.3.0
+
+* Automatic load/save settings
+* XPI extension restored
+
 # 0.2.0
 
 * Settings are now externalized in `settings.json`. XPI extension has been removed to let everyone edit `settings.json` more easily.
