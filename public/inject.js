@@ -4,7 +4,7 @@ const SELECTABLE_COINS_SELECTOR = '.ms-selectable .ms-list li';
 const SELECTED_COINS_SELECTOR = '.ms-selection .ms-list li';
 
 const adapter = chrome || browser; // For cross-browser compatibility
-const SETTINGS_KEY = 'settings.0.3.0';
+const SETTINGS_KEY = 'settings.1';
 
 function adapt(fn) {
   return function apply(...args) {
@@ -36,19 +36,14 @@ const commands = {
     return Promise.resolve();
   },
   loadSettings() {
-    return adapt(adapter.storage.local.get)([SETTINGS_KEY]).then(
-      (result = {}) => {
-        const settings = result[SETTINGS_KEY] || '{}';
-        return JSON.parse(settings);
-      }
-    );
+    return adapt(adapter.storage.local.get)([SETTINGS_KEY]).then((result) => {
+      const settings = result && result[SETTINGS_KEY];
+      return settings || {};
+    });
   },
   saveSettings(request) {
     const { settings } = request;
-    const serializedSettings = JSON.stringify(settings);
-    return adapt(adapter.storage.local.set)({
-      [SETTINGS_KEY]: serializedSettings,
-    });
+    return adapt(adapter.storage.local.set)({ [SETTINGS_KEY]: settings });
   },
 };
 
