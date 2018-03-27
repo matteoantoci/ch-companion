@@ -4,7 +4,7 @@ const SELECTABLE_COINS_SELECTOR = '.ms-selectable .ms-list li';
 const SELECTED_COINS_SELECTOR = '.ms-selection .ms-list li';
 
 const adapter = chrome || browser; // For cross-browser compatibility
-const SETTINGS_KEY = 'settings.1';
+const SETTINGS_KEY = 'settings.3';
 
 function adapt(fn) {
   return function apply(...args) {

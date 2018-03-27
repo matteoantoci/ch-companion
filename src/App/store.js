@@ -1,4 +1,4 @@
-import { observable, configure, action } from 'mobx';
+import { observable, configure, action, toJS } from 'mobx';
 
 configure({ enforceActions: true });
 
@@ -34,7 +34,7 @@ export function createStore() {
     ratingFilters: RATING_FILTERS,
     fields: { ...FIELDS_DEFAULTS },
     get settings() {
-      return store.fields;
+      return toJS(store.fields);
     },
     setLoading,
     setField,
