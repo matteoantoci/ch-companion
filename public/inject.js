@@ -4,7 +4,7 @@ const SELECTABLE_COINS_SELECTOR = '.ms-selectable .ms-list li';
 const SELECTED_COINS_SELECTOR = '.ms-selection .ms-list li';
 
 const adapter = chrome || browser; // For cross-browser compatibility
-const noop = () => {};
+
 const commands = {
   selectCoins(request) {
     const $selectableCoins = $(SELECTABLE_COINS_SELECTOR);
@@ -22,12 +22,17 @@ const commands = {
 
     const { coins = [] } = request;
     coins.forEach(selectSymbol);
+    return Promise.resolve();
   },
 };
 
-adapter.runtime.onMessage.addListener((request, sender, sendResponse) => {
+function handleCommand(request, sender, sendResponse) {
   const { command } = request;
-  const runCommand = commands[command] || noop;
-  runCommand(request);
-  sendResponse({ ok: true });
-});
+  const runCommand = commands[command];
+  runCommand(request).then((data) => {
+    sendResponse({ ok: true, data });
+  });
+  return true;
+}
+
+adapter.runtime.onMessage.addListener(handleCommand);
