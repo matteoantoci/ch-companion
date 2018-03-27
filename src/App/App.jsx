@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import { forEach } from 'lodash-es';
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
@@ -9,20 +8,7 @@ import { fetchCoins } from '../tradingView/gateway';
 import { createStore } from './store';
 import { OptionsForm } from './OptionsForm';
 import { loadSettings } from '../settings';
-
-const TABS_QUERY = { active: true, currentWindow: true };
-
-function sendMessage(payload) {
-  return chrome // For cross-browser compatibility
-    ? new Promise((resolve) => {
-        chrome.tabs.query(TABS_QUERY, (tabs) => {
-          chrome.tabs.sendMessage(tabs[0].id, payload, resolve);
-        });
-      })
-    : browser.tabs.query(TABS_QUERY).then((tabs) => {
-        browser.tabs.sendMessage(tabs[0].id, payload);
-      });
-}
+import { selectCoins } from '../commands';
 
 class App extends Component {
   constructor(props) {
@@ -57,7 +43,7 @@ class App extends Component {
     const { store } = this;
     store.setLoading(true);
     return fetchCoins(store.config)
-      .then((coins) => sendMessage({ coins }))
+      .then((coins) => selectCoins({ coins }))
       .finally(() => {
         store.setLoading(false);
       });
