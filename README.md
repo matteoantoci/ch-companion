@@ -50,10 +50,10 @@ That's it!
 ### Donations
 This software is free and open source. You may want to consider buying me a "crypto-beer" =)
 
-**BTC**: 1ER32tJqr4ApakJtzAPQfGyQnn4DJD8P6i
+**BTC**: `1ER32tJqr4ApakJtzAPQfGyQnn4DJD8P6i`
 
-**ETH**: 0xae4a91c06542514cccd573cab52b8b1c66f0c342
+**ETH**: `0xae4a91c06542514cccd573cab52b8b1c66f0c342`
 
-**LTC**: LYcxLoTdtYX73zxdHWxjnMzTHoMQ5mEkWZ
+**LTC**: `LYcxLoTdtYX73zxdHWxjnMzTHoMQ5mEkWZ`
 
-**BNB**: 0xae4a91c06542514cccd573cab52b8b1c66f0c342
+**BNB**: `0xae4a91c06542514cccd573cab52b8b1c66f0c342`
