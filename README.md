@@ -55,3 +55,5 @@ This software is free and open source. You may want to consider buying me a "cry
 **ETH**: 0xae4a91c06542514cccd573cab52b8b1c66f0c342
 
 **LTC**: LYcxLoTdtYX73zxdHWxjnMzTHoMQ5mEkWZ
+
+**BNB**: 0xae4a91c06542514cccd573cab52b8b1c66f0c342
