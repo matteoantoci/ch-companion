@@ -1,3 +1,8 @@
+# 0.4.0
+
+* Added max % change
+* Added whitelist
+
 # 0.3.0
 
 * Automatic load/save settings
