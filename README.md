@@ -44,7 +44,7 @@ And finally it will auto-select the resulting coins on your CH config page.
 ### Usage
 1. Go to your CH config page
 1. Click on the extension icon
-1. Set preferences. **Watch out**: Blacklist accepts comma separated values! Eg: `USDT, BNB`.
+1. Set preferences. **Watch out**: Blacklist and whitelist accept comma separated values! Eg: `USDT, BNB`.
 1. Click on the "Select coins" button
 
 That's it!
