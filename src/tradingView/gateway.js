@@ -1,4 +1,4 @@
-import { difference, take } from 'lodash-es';
+import { difference, take, uniq } from 'lodash-es';
 import { createQuery } from './query';
 
 function formatResults({ data, settings }) {
@@ -10,9 +10,10 @@ function formatResults({ data, settings }) {
 }
 
 function applysettings({ data, settings }) {
-  const { blacklist, limit } = settings;
+  const { whitelist, blacklist, limit } = settings;
   const filteredCoins = difference(data, blacklist);
-  return take(filteredCoins, limit);
+  const allCoins = uniq(whitelist.concat(filteredCoins));
+  return take(allCoins, limit);
 }
 
 export function fetchCoins(settings) {

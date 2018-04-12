@@ -34,8 +34,14 @@ function createVolatilityFilter(volatility) {
     : null;
 }
 
+function createMaxChangeFilter(maxChange) {
+  return checkValue(maxChange)
+    ? { left: 'change', operation: 'eless', right: parseFloat(maxChange) }
+    : null;
+}
+
 function createBaseFilters(settings) {
-  const { exchange, baseCurrency, volatility } = settings;
+  const { exchange, baseCurrency, volatility, maxChange } = settings;
   const filters = [
     {
       left: 'exchange',
@@ -48,7 +54,10 @@ function createBaseFilters(settings) {
       right: baseCurrency.toLowerCase(),
     },
   ];
-  const optionalFilters = [createVolatilityFilter(volatility)].filter(Boolean);
+  const optionalFilters = [
+    createVolatilityFilter(volatility),
+    createMaxChangeFilter(maxChange),
+  ].filter(Boolean);
   return filters.concat(optionalFilters);
 }
 
@@ -65,6 +74,6 @@ export const createQuery = (settings) => {
     options: {
       lang: 'en',
     },
-    range: [0, 75],
+    range: [0, 150],
   });
 };

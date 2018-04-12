@@ -43,6 +43,13 @@ export const OptionsForm = observer((props) => {
         handleChange={createHandler('limit')}
       />
       <Field
+        fieldName="whitelist"
+        label="Whitelisted coins"
+        store={store}
+        value={store.fields.whitelist.join(', ')}
+        handleChange={createListHandler('whitelist')}
+      />
+      <Field
         fieldName="blacklist"
         label="Blacklisted coins"
         store={store}
@@ -51,9 +58,15 @@ export const OptionsForm = observer((props) => {
       />
       <Field
         fieldName="volatility"
-        label="Volatility"
+        label="Min % volatility"
         store={store}
         handleChange={createHandler('volatility')}
+      />
+      <Field
+        fieldName="maxChange"
+        label="Max % change"
+        store={store}
+        handleChange={createHandler('maxChange')}
       />
       <Field
         fieldName="rating"

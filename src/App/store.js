@@ -12,8 +12,10 @@ const FIELDS_DEFAULTS = {
   baseCurrency: '',
   exchange: '',
   blacklist: [],
+  whitelist: [],
   limit: '',
   volatility: '',
+  maxChange: '',
   rating: '',
 };
 
