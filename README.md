@@ -35,6 +35,12 @@ And finally it will auto-select the resulting coins on your CH config page.
 1. Enable "Developer mode"
 1. Click on "Load unpacked" and select the folder where you unzipped the file
 
+### Upgrade
+1. Remove the old version
+1. Install the new one
+
+**Watch out**: upgrading may erase your saved settings. Keep note of them before proceeding!
+
 ### Usage
 1. Go to your CH config page
 1. Click on the extension icon
