@@ -9,12 +9,7 @@ function createOscillatorsRatingFilter(rating) {
             operation: 'in_range',
             right: [0.5, 1], // Strong buy
           },
-          {
-            left: rating,
-            operation: 'in_range',
-            right: [0, 0.5], // Buy
-          },
-        ],
+            ],
       }
     : {};
 }
