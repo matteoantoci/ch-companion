@@ -9,10 +9,7 @@ function createOscillatorsRatingFilter(rating) {
             operation: 'in_range',
             right: [0.5, 1], // Strong buy
           },
-   
-        ],
-      }
-    : {};
+       : {};
 }
 
 function createVolatilityFilter(volatility) {
