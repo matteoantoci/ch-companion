@@ -9,10 +9,22 @@ function createOscillatorsRatingFilter(rating) {
             operation: 'in_range',
             right: [0.5, 1], // Strong buy
           },
-       : {};
+        ],
+      }
+    : {};
 }
 
 function createVolatilityFilter(volatility) {
+  return checkValue(volatility)
+    ? {
+        left: 'Volatility.D',
+        operation: 'egreater',
+        right: parseFloat(volatility),
+      }
+    : null;
+}
+
+function createMaxChangeFilter(maxChange) {
   return checkValue(maxChange)
     ? { left: 'change', operation: 'eless', right: parseFloat(maxChange) }
     : null;
